@@ -2,6 +2,7 @@ import sequelize from "../utils/db.js";
 import { dataValid } from "../validation/dataValidation.js";
 import { sendMail } from "../utils/sendMail.js";
 import User from "../models/userModel.js";
+import { Op } from "sequelize";
 const setUser = async (req, res, next) => {
   const t = await sequelize.transaction();
   const valid = {
@@ -78,7 +79,7 @@ const setUser = async (req, res, next) => {
           userId: newUser.userId,
           name: newUser.name,
           email: newUser.email,
-          expireTime: newUser.expireTime,
+          expireTime: newUser.expireTime.toString(),
         },
       });
     }
@@ -88,4 +89,57 @@ const setUser = async (req, res, next) => {
   }
 };
 
-export { setUser };
+const setActivateUser = async (req, res, next) => {
+  try {
+    const user_id = req.params.id;
+    const user = await User.findOne({
+      where: {
+        userId: user_id,
+        isActive: false,
+        expireTime: {
+          [Op.gte]: new Date(),
+        },
+      },
+    });
+    if (!user) {
+      return res.status(404).json({
+        errors: ["User not found or expired"],
+        message: "Activate User Field",
+        data: null,
+      });
+    } else {
+      user.isActive = true;
+      user.expireTime = null;
+      await user.save();
+      return res.status(200).json({
+        errors: [],
+        message: "User activated successfully",
+        data: {
+          name: user.name,
+          email: user.email,
+        },
+      });
+    }
+  } catch (error) {
+    next(
+      new Error(
+        "controllers/userController.js:setActivateUser - " + error.message
+      )
+    );
+  }
+};
+
+const getUser = async (req, res, next) => {
+  try {
+    const user = await User.findAll();
+    res.status(200).json({
+      errors: [],
+      message: "User retrieved successfully",
+      data: user,
+    });
+  } catch (error) {
+    next(new Error("controllers/userController.js:getUser - " + error.message));
+  }
+};
+
+export { setUser, setActivateUser, getUser };

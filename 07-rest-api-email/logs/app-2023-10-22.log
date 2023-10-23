@@ -1,0 +1,11 @@
+ [LOGGER] 2023-10-22 11:05:38.023 AM error : uncaughtException: connect ECONNREFUSED 127.0.0.1:3306
+SequelizeConnectionRefusedError: connect ECONNREFUSED 127.0.0.1:3306
+    at ConnectionManager.connect (C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\dialects\mariadb\connection-manager.js:87:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ConnectionManager._connect (C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32
+    at async ConnectionManager.getConnection (C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:197:7)
+    at async C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\sequelize.js:305:26
+    at async MySQLQueryInterface.tableExists (C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\dialects\abstract\query-interface.js:102:17)
+    at async User.sync (C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\model.js:939:21)
+    at async Sequelize.sync (C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\sequelize.js:377:9)
