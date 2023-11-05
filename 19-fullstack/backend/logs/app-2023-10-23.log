@@ -1,0 +1,1 @@
+ [LOGGER] 2023-10-23 09:04:19.606 PM error : controllers/userController.js:setLogin - WHERE parameter "email" has invalid "undefined" value

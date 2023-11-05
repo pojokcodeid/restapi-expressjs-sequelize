@@ -1,3 +1,4 @@
+import { Op } from "sequelize";
 import Address from "../models/addressModel.js";
 import Contact from "../models/contactModel.js";
 import sequelize from "../utils/db.js";
@@ -29,11 +30,11 @@ const setContact = async (req, res, next) => {
             addressType: "requered",
             street: "requered",
           },
-          item
+          item,
         );
         lstError.push(...addressClear.message);
         return addressClear.data;
-      })
+      }),
     );
 
     contact = {
@@ -62,9 +63,9 @@ const setContact = async (req, res, next) => {
           },
           {
             transaction: t,
-          }
+          },
         );
-      })
+      }),
     );
     if (!createContact || !createAddress) {
       await t.rollback();
@@ -84,10 +85,81 @@ const setContact = async (req, res, next) => {
     await t.rollback();
     next(
       new Error(
-        "controllers/contactController.js:setContact - " + error.message
-      )
+        "controllers/contactController.js:setContact - " + error.message,
+      ),
     );
   }
 };
 
-export { setContact };
+const getContact = async (req, res, next) => {
+  try {
+    // persiapan filter
+    const contacts = req.body;
+    let address = [];
+    if (isExists(contacts.Addresses)) {
+      address = contacts.Addresses;
+      delete contacts.Addresses;
+    }
+
+    // filter address
+    let objFilter = [];
+    const filterAddress = await new Promise((resolve, reject) => {
+      Object.entries(address).forEach(([key, value]) => {
+        objFilter = {
+          ...objFilter,
+          [key]: {
+            [Op.like]: "%" + value + "%",
+          },
+        };
+      });
+      resolve(objFilter);
+    });
+
+    // filter contact
+    let objContact = [];
+    const filterContact = await new Promise((resolve, reject) => {
+      Object.entries(contacts).forEach(([key, value]) => {
+        objFilter = {
+          ...objContact,
+          [key]: {
+            [Op.like]: "%" + value + "%",
+          },
+        };
+      });
+      resolve(objFilter);
+    });
+
+    // cek ada filter atau tidak
+    let data = null;
+    if (Object.keys(filterAddress).length == 0) {
+      data = await Contact.findAll({
+        include: {
+          model: Address,
+        },
+        where: filterContact,
+      });
+    } else {
+      data = await Contact.findAll({
+        include: {
+          model: Address,
+          where: filterAddress,
+        },
+        where: filterContact,
+      });
+    }
+
+    res.json({
+      errors: [],
+      message: "Get Contact successfully",
+      data: data,
+    });
+  } catch (error) {
+    next(
+      new Error(
+        "controllers/contactController.js:getContact - " + error.message,
+      ),
+    );
+  }
+};
+
+export { setContact, getContact };

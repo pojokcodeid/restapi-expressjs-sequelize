@@ -1,0 +1,19 @@
+ [LOGGER] 2023-10-22 11:05:38.023 AM error : uncaughtException: connect ECONNREFUSED 127.0.0.1:3306
+SequelizeConnectionRefusedError: connect ECONNREFUSED 127.0.0.1:3306
+    at ConnectionManager.connect (C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\dialects\mariadb\connection-manager.js:87:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ConnectionManager._connect (C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32
+    at async ConnectionManager.getConnection (C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:197:7)
+    at async C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\sequelize.js:305:26
+    at async MySQLQueryInterface.tableExists (C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\dialects\abstract\query-interface.js:102:17)
+    at async User.sync (C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\model.js:939:21)
+    at async Sequelize.sync (C:\youtube\rest-api\07-rest-api-email\node_modules\sequelize\lib\sequelize.js:377:9)
+ [LOGGER] 2023-10-22 08:04:05.221 PM error : uncaughtException: setActivateUser is not defined
+ReferenceError: setActivateUser is not defined
+    at file:///C:/youtube/rest-api/08-rest-api-activasi/src/routes/userRoute.js:6:39
+    at ModuleJob.run (node:internal/modules/esm/module_job:194:25)
+ [LOGGER] 2023-10-22 08:11:31.910 PM error : uncaughtException: getUser is not defined
+ReferenceError: getUser is not defined
+    at file:///C:/youtube/rest-api/08-rest-api-activasi/src/routes/userRoute.js:6:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:194:25)
