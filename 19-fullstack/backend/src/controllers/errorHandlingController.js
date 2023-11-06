@@ -1,7 +1,7 @@
 import logger from "../middleware/winston.js";
 import { verifyAccessToken } from "../utils/jwt.js";
 
-const errorrHandling = (err, req, res, next) => {
+const errorrHandling = (err, req, res) => {
   const message = err.message.split(" - ")[1];
   logger.error(err);
   res.status(500).json({

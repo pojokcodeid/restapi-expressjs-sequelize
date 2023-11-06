@@ -103,7 +103,7 @@ const getContact = async (req, res, next) => {
 
     // filter address
     let objFilter = [];
-    const filterAddress = await new Promise((resolve, reject) => {
+    const filterAddress = await new Promise((resolve) => {
       Object.entries(address).forEach(([key, value]) => {
         objFilter = {
           ...objFilter,
@@ -117,7 +117,7 @@ const getContact = async (req, res, next) => {
 
     // filter contact
     let objContact = [];
-    const filterContact = await new Promise((resolve, reject) => {
+    const filterContact = await new Promise((resolve) => {
       Object.entries(contacts).forEach(([key, value]) => {
         objFilter = {
           ...objContact,

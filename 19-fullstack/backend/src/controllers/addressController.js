@@ -19,8 +19,8 @@ const getAddress = async (req, res, next) => {
   } catch (error) {
     next(
       new Error(
-        "controllers/addressController.js:getAddress - " + error.message
-      )
+        "controllers/addressController.js:getAddress - " + error.message,
+      ),
     );
   }
 };
@@ -48,8 +48,8 @@ const getAddressById = async (req, res, next) => {
   } catch (error) {
     next(
       new Error(
-        "controllers/addressController.js:getAddressById - " + error.message
-      )
+        "controllers/addressController.js:getAddressById - " + error.message,
+      ),
     );
   }
 };
@@ -85,8 +85,8 @@ const addNewAddress = async (req, res, next) => {
   } catch (error) {
     next(
       new Error(
-        "controllers/addressController.js:addNewAddress - " + error.message
-      )
+        "controllers/addressController.js:addNewAddress - " + error.message,
+      ),
     );
   }
 };
@@ -112,7 +112,7 @@ const updateAddress = async (req, res, next) => {
         where: {
           addressId: id,
         },
-      }
+      },
     );
     if (!result) {
       return res.status(404).json({
@@ -129,8 +129,8 @@ const updateAddress = async (req, res, next) => {
   } catch (error) {
     next(
       new Error(
-        "controllers/addressController.js:updateAddress - " + error.message
-      )
+        "controllers/addressController.js:updateAddress - " + error.message,
+      ),
     );
   }
 };
@@ -158,8 +158,8 @@ const deleteAddress = async (req, res, next) => {
   } catch (error) {
     next(
       new Error(
-        "controllers/addressController.js:deleteAddress - " + error.message
-      )
+        "controllers/addressController.js:deleteAddress - " + error.message,
+      ),
     );
   }
 };
