@@ -1,0 +1,8 @@
+ [LOGGER] 2023-10-25 08:56:05.573 PM error : uncaughtException: listen EADDRINUSE: address already in use :::3000
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1751:16)
+    at listenInCluster (node:net:1799:12)
+    at Server.listen (node:net:1887:7)
+    at Function.listen (C:\youtube\rest-api\11-rest-api-update\node_modules\express\lib\application.js:635:24)
+    at file:///C:/youtube/rest-api/11-rest-api-update/src/index.js:9:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:194:25)
