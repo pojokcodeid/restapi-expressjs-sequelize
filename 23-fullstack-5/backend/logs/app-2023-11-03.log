@@ -1,0 +1,12 @@
+ [LOGGER] 2023-11-03 09:06:33.211 PM error : uncaughtException: t.rollback is not a function
+TypeError: t.rollback is not a function
+    at deleteContact (file:///C:/youtube/rest-api/17-rest-api-delete/src/controllers/contactController.js:360:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ [LOGGER] 2023-11-03 10:32:20.080 PM error : uncaughtException: listen EADDRINUSE: address already in use :::3000
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1740:16)
+    at listenInCluster (node:net:1788:12)
+    at Server.listen (node:net:1876:7)
+    at Function.listen (C:\youtube\rest-api\17-rest-api-delete\node_modules\express\lib\application.js:635:24)
+    at file:///C:/youtube/rest-api/17-rest-api-delete/src/index.js:9:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:194:25)
