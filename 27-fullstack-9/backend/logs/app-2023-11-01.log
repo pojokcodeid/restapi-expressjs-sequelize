@@ -1,0 +1,7 @@
+ [LOGGER] 2023-11-01 04:55:20.680 PM error : uncaughtException: Operation timeout
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at ConnectionManager.getConnection (C:\youtube\sequelize\16-fulstack-redux\server\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:206:15)
+    at async Transaction.prepareEnvironment (C:\youtube\sequelize\16-fulstack-redux\server\node_modules\sequelize\lib\transaction.js:85:24)
+    at async Sequelize.transaction (C:\youtube\sequelize\16-fulstack-redux\server\node_modules\sequelize\lib\sequelize.js:500:7)
+    at async setContact (file:///C:/youtube/sequelize/16-fulstack-redux/server/src/controllers/contactController.js:9:13)
+ [LOGGER] 2023-11-01 10:50:52.575 PM error : controllers/userController.js:setRefreshToken - Operation timeout

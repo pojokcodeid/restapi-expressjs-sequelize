@@ -1,0 +1,6 @@
+ [LOGGER] 2023-11-09 09:09:23.099 PM error : uncaughtException: Operation timeout
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at ConnectionManager.getConnection (C:\youtube\rest-api\23-fullstack-5\backend\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:206:15)
+    at async Transaction.prepareEnvironment (C:\youtube\rest-api\23-fullstack-5\backend\node_modules\sequelize\lib\transaction.js:85:24)
+    at async Sequelize.transaction (C:\youtube\rest-api\23-fullstack-5\backend\node_modules\sequelize\lib\sequelize.js:500:7)
+    at async setUser (file:///C:/youtube/rest-api/23-fullstack-5/backend/src/controllers/userController.js:16:13)
